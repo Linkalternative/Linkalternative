@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Redirecting...</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 380px;
+      padding: 30px 24px;
+      text-align: center;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px #0005;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+      color: #60a5fa;
+      background: #263953;
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+    p {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .timer-box {
+      margin: 24px 0;
+      padding: 18px;
+      background: #0f172a;
+      border-radius: 12px;
+    }
+
+    .timer-label {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    #countdown {
+      margin-top: 8px;
+      font-size: 42px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+
+    .btn {
+      display: block;
+      padding: 16px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="icon">↗</div>
+
+    <h1>YOU ARE BEING REDIRECTED</h1>
+
+    <p>
+      You will be redirected to your destination shortly.
+      Please wait a few seconds.
+    </p>
+
+    <div class="timer-box">
+      <div class="timer-label">Redirecting in</div>
+      <div id="countdown">3</div>
+    </div>
+
+    <a
+      class="btn"
+      id="continueBtn"
+      href="https://melayangtinggi.github.io/ClickLinkVideo/"
+    >
+      CONTINUE NOW ↗
+    </a>
+
+    <div class="note">
+      If you are not redirected automatically, click the button above.
+    </div>
+  </main>
+
+  <script>
+    const targetURL =
+      "https://melayangtinggi.github.io/ClickLinkVideo/";
+
+    let seconds = 3;
+    let redirected = false;
+
+    const countdown = document.getElementById("countdown");
+    const button = document.getElementById("continueBtn");
+
+    const timer = setInterval(function () {
+      seconds--;
+      countdown.textContent = seconds;
+
+      if (seconds <= 0 && !redirected) {
+        redirected = true;
+        clearInterval(timer);
+        countdown.textContent = "GO!";
+        window.location.href = targetURL;
+      }
+    }, 1000);
+
+    button.addEventListener("click", function () {
+      redirected = true;
+      clearInterval(timer);
+    });
+  </script>
+</body>
+</html>
